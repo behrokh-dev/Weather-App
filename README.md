@@ -5,7 +5,7 @@ The app uses a weather API to fetch and display weather information for searched
 
 ## 📸 Live Demo
 
-🔗 - Live Demo: [Weather App](https://behrokh-dev.github.io/Weather-App/)
+🔗 - Live Demo: https://behrokh-dev.github.io/Weather-App/
 
 ---
 
