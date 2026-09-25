@@ -3,13 +3,17 @@
 A responsive weather application built with **HTML, Tailwind CSS, and Vanilla JavaScript**.  
 The app uses a weather API to fetch and display weather information for searched cities.
 
-## 📸 Live Demo
+## 🔗 Live Demo
 
 🔗 - Live Demo: https://behrokh-dev.github.io/Weather-App/
 
 ---
 
 ## 📸 Preview
+
+<img width="1918" height="1080" alt="Image" src="https://github.com/user-attachments/assets/2fa2e7b2-f1b7-4060-ba10-b6e85c0fbae1" />
+
+<img width="1918" height="1080" alt="Image" src="https://github.com/user-attachments/assets/cd172367-9c88-47bd-9af1-c9a34555911d" />
 
 ---
 
