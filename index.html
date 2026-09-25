@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Weather App</title>
+
+    <link rel="stylesheet" href="assets/stylesheet/output.css" />
+    <link rel="stylesheet" href="assets/icons/remixicon.css">
+  </head>
+
+  <body>
+    <!-- Decorative Background Elements -->
+    <div class="weather-decoration decoration-one"></div>
+    <div class="weather-decoration decoration-two"></div>
+    <div class="weather-decoration decoration-three"></div>
+
+    <div class="container">
+      <header class="weather-header">
+        <span class="weather-icon">⛅</span>
+        <div>
+          <h1 class="title">Weatherly</h1>
+          <p class="subtitle">Check the weather anywhere</p>
+        </div>
+        <span class="weather-icon">❄️</span>
+      </header>
+
+      <main class="weather-grid">
+        <!-- Search Card -->
+        <section class="weather-card search-card">
+
+           <span class="weather-icon">🌡️</span>
+          <p class="card-label">SEARCH LOCATION</p>
+          <h2 class="card-title"><div class="card-icon">🔎</div>Find your city</h2>
+          <p class="card-description">Enter a city name to discover the current weather.</p>
+
+          <form id="searchForm" class="search-box">
+            <input id="cityInput" class="search-input" type="text" dir="ltr" placeholder="Tehran" autocomplete="off" />
+            <button id="searchBtn" class="search-btn" type="submit">Search</button>
+          </form>
+          <div id="status" class="status"></div>
+
+        </section>
+
+
+        <!-- Result Card -->
+        <section class="weather-card result-card-wrapper">
+          <div id="resultArea">
+            <!-- Default State -->
+            <div class="weather-empty">
+              <div class="weather-orbit">
+                <div class="sun"></div>
+                <div class="cloud cloud-one"></div>
+                <div class="cloud cloud-two"></div>
+              </div>
+              <h2 class="empty-title">Your weather awaits</h2>
+              <p class="empty-text">Search for a city to see the current weather conditions.</p>
+            </div>
+
+          </div>
+
+        </section>
+
+      </main>
+
+
+    </div>
+
+    <!-- MyFooter -->
+      <footer class="weather-footer">
+        
+        <div class="footer-profile">
+          <div class="avatar-box">
+            <img src="assets/img/bh2.jpg" alt="Avatar" class="avatar-img" />
+            <span class="status-dot"></span>
+          </div>
+          <div class="profile-info">
+            <h3>Behrokh-Dev</h3>
+            <p>Frontend Developer</p>
+            <p>Made with love by <i class="ri-tailwind-css-fill"></i><i class="ri-javascript-fill"></i></p>
+          </div>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://github.com/behrokh-dev" class="social-btn" title="GitHub" target="_blank">
+            <i class="ri-github-fill"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/behrokh-naderi/" class="social-btn" title="Linkedin" target="_blank">
+            <i class="ri-linkedin-box-fill"></i>
+          </a>
+          <a href="https://www.instagram.com/behrokh_dev" class="social-btn" title="Instagram" target="_blank">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="mailto:naderibehrokh@gmail.com" class="social-btn" title="Gmail" target="_blank">
+           <i class="ri-google-fill"></i>
+          </a>
+        </div>
+
+      </footer>
+
+    <script src="assets/javascript/master.js"></script>
+  </body>
+</html>
+

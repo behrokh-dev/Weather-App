@@ -1,0 +1,547 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("../fonts/Vazirmatn-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  @apply w-full max-w-full overflow-x-hidden;
+}
+
+body {
+  @apply min-h-screen w-full max-w-full box-border flex flex-col items-center justify-center px-4 py-8 sm:px-5 sm:py-0 select-none overflow-x-hidden;
+  font-family: "Vazirmatn", sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 15% 15%,
+      rgba(255, 255, 255, 0.95) 0%,
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 10%,
+      rgba(186, 230, 253, 0.9) 0%,
+      transparent 30%
+    ),
+    linear-gradient(135deg, #e8f8ff 0%, #b7e5fa 45%, #70c4ed 100%);
+
+  position: relative;
+}
+
+/* ================= Decorations ================= */
+
+.weather-decoration {
+  @apply fixed rounded-full pointer-events-none;
+  z-index: 0;
+
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    0 20px 50px rgba(14, 116, 144, 0.08);
+}
+
+.decoration-one {
+  @apply w-35 h-35 top-[8%] left-[-50px] sm:left-[6%];
+  animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+.decoration-two {
+  @apply w-[65px] h-[65px] bottom-[16%] left-auto right-[5%] sm:left-[18%] sm:right-auto;
+  animation: bubbleFloat 2s ease-in-out infinite reverse;
+}
+
+.decoration-three {
+  @apply w-[190px] h-[190px] top-[28%] right-[-90px];
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ================= Main Container ================= */
+
+.container {
+  @apply relative z-10 w-full max-w-4xl min-w-0 box-border;
+}
+
+/* ================= Header ================= */
+
+.weather-header {
+  @apply flex items-center justify-center gap-3 mb-8 mt-6 text-center min-w-0 max-w-full;
+}
+
+.weather-icon {
+  @apply text-4xl shrink-0;
+
+  filter: drop-shadow(0 8px 15px rgba(14, 116, 144, 0.18));
+}
+
+.title {
+  @apply text-3xl md:text-4xl font-extrabold leading-none max-w-full;
+
+  color: #075985;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  @apply text-sm mt-2 max-w-full;
+
+  color: rgba(7, 89, 133, 0.58);
+}
+
+/* ================= Weather Grid ================= */
+
+.weather-grid {
+  @apply grid grid-cols-1 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-5 w-full max-w-full min-w-0 box-border;
+}
+
+/* ================= Weather Card ================= */
+
+.weather-card {
+  @apply w-full max-w-full min-w-0 box-border rounded-[2rem] p-5 sm:p-7;
+
+  background: rgba(255, 255, 255, 0.32);
+
+  border: 1px solid rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 60px rgba(14, 116, 144, 0.14),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.search-card {
+  @apply flex flex-col justify-center items-center min-w-0;
+}
+
+/* ================= Card Content ================= */
+
+.card-icon {
+  @apply w-12 h-12 shrink-0 flex items-center justify-center rounded-2xl mb-5;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow: 0 10px 25px rgba(14, 116, 144, 0.08);
+}
+
+.card-label {
+  @apply text-[10px] font-bold tracking-[0.22em] mb-2;
+
+  color: rgba(7, 89, 133, 0.5);
+}
+
+.card-title {
+  @apply text-2xl font-extrabold mb-2 flex items-center justify-center gap-3 max-w-full;
+
+  color: #075985;
+}
+
+.card-description {
+  @apply text-sm leading-6 mb-6 text-center max-w-full;
+
+  color: rgba(7, 89, 133, 0.6);
+}
+
+/* ================= Search ================= */
+
+.search-box {
+  @apply flex flex-col sm:flex-row items-center gap-2 p-2 rounded-2xl w-full max-w-full min-w-0 box-border;
+
+  background: rgba(255, 255, 255, 0.48);
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.8),
+    0 12px 25px rgba(14, 116, 144, 0.08);
+}
+
+.search-input {
+  @apply flex-1 min-w-0 w-full sm:w-auto max-w-full box-border px-4 py-3 rounded-xl outline-none;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  border: 1px solid rgba(125, 211, 252, 0.28);
+
+  color: #075985;
+
+  font-size: 14px;
+
+  box-shadow: inset 0 1px 3px rgba(14, 116, 144, 0.04);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.search-input::placeholder {
+  color: rgba(7, 89, 133, 0.4);
+}
+
+.search-input:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.95);
+
+  border-color: rgba(14, 165, 233, 0.45);
+
+  box-shadow:
+    0 0 0 4px rgba(14, 165, 233, 0.1),
+    0 8px 20px rgba(14, 116, 144, 0.08);
+}
+
+.search-btn {
+  @apply shrink-0 w-full sm:w-auto max-w-full box-border rounded-xl px-5 py-3 font-bold text-sm text-white;
+
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  box-shadow:
+    0 8px 18px rgba(3, 105, 161, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.search-btn:hover {
+  transform: translateY(-2px);
+
+  background: linear-gradient(135deg, #0369a1, #075985);
+
+  box-shadow: 0 12px 25px rgba(3, 105, 161, 0.25);
+}
+
+.search-btn:active {
+  transform: translateY(0);
+}
+
+.search-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ================= Status ================= */
+
+.status {
+  @apply text-center text-xs mt-4 max-w-full;
+
+  color: rgba(7, 89, 133, 0.55);
+}
+
+/* ================= Result Area ================= */
+
+.result-card-wrapper {
+  @apply flex items-center justify-center min-h-[300px] md:min-h-[350px] w-full max-w-full min-w-0;
+}
+
+.weather-empty {
+  @apply text-center max-w-full;
+}
+
+.weather-orbit {
+  @apply relative mx-auto mb-7;
+
+  width: 140px;
+  height: 100px;
+}
+
+.sun {
+  @apply absolute rounded-full;
+
+  width: 70px;
+  height: 70px;
+
+  top: 5px;
+  left: 35px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  box-shadow:
+    0 0 35px rgba(255, 255, 255, 0.85),
+    0 0 70px rgba(255, 255, 255, 0.35);
+
+  animation: sunFloat 2s ease-in-out infinite;
+}
+
+.cloud {
+  @apply absolute rounded-full;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  box-shadow: 0 8px 20px rgba(14, 116, 144, 0.08);
+}
+
+.cloud-one {
+  width: 70px;
+  height: 25px;
+
+  bottom: 18px;
+  left: 5px;
+}
+
+.cloud-one::before {
+  content: "";
+
+  @apply absolute rounded-full;
+
+  width: 35px;
+  height: 35px;
+
+  background: inherit;
+
+  bottom: 8px;
+  left: 15px;
+}
+
+.cloud-two {
+  width: 48px;
+  height: 19px;
+
+  bottom: 8px;
+  right: 4px;
+}
+
+.cloud-two::before {
+  content: "";
+
+  @apply absolute rounded-full;
+
+  width: 25px;
+  height: 25px;
+
+  background: inherit;
+
+  bottom: 7px;
+  right: 8px;
+}
+
+.empty-title {
+  @apply text-xl font-bold mb-2 max-w-full;
+
+  color: #075985;
+}
+
+.empty-text {
+  @apply text-sm leading-6 max-w-xs mx-auto;
+
+  color: rgba(7, 89, 133, 0.58);
+}
+
+/* ================= Result ================= */
+
+#resultArea {
+  @apply w-full max-w-full min-w-0 box-border;
+}
+
+#resultArea .result-card {
+  @apply w-full max-w-full min-w-0 box-border rounded-[1.7rem] p-6 flex flex-col items-center justify-center;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.58),
+    rgba(255, 255, 255, 0.25)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  box-shadow:
+    0 20px 45px rgba(14, 116, 144, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+
+  animation: resultAppear 0.45s ease both;
+}
+
+#resultArea .result-city {
+  @apply text-2xl font-extrabold mb-3 max-w-full text-center;
+
+  color: #075985;
+}
+
+#resultArea .result-temp {
+  @apply text-5xl md:text-6xl font-extrabold leading-none mb-4;
+
+  color: #0369a1;
+
+  letter-spacing: -3px;
+}
+
+#resultArea .result-desc {
+  @apply text-sm font-medium mb-5 max-w-full text-center;
+
+  color: rgba(7, 89, 133, 0.68);
+}
+
+#resultArea .result-extra {
+  @apply text-xs leading-6 max-w-full text-center;
+
+  color: rgba(7, 89, 133, 0.58);
+}
+
+/* ================= Error ================= */
+
+#resultArea .error-card {
+  @apply w-full max-w-full min-w-0 box-border rounded-[1.7rem] p-6 text-center;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  box-shadow: 0 20px 40px rgba(14, 116, 144, 0.08);
+
+  animation: resultAppear 0.35s ease both;
+}
+
+#resultArea .error-card span {
+  @apply block text-4xl mb-3;
+}
+
+#resultArea .error-card div {
+  @apply text-sm max-w-full;
+
+  color: #075985;
+}
+
+/* ================= Footer ================= */
+
+.weather-footer {
+  @apply flex flex-col md:flex-row md:items-center md:justify-between gap-4 mt-8 w-full max-w-4xl min-w-0 box-border px-5 py-5 lg:px-10 lg:py-2 rounded-[2rem] overflow-hidden;
+
+  background: rgba(255, 255, 255, 0.32);
+
+  border: 1px solid rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  box-shadow:
+    0 25px 60px rgba(14, 116, 144, 0.14),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.footer-profile {
+  @apply flex items-center justify-center md:justify-start gap-3 pt-2 min-w-0 max-w-full;
+}
+
+.avatar-box {
+  @apply relative w-25 h-25 shrink-0;
+}
+
+.avatar-img {
+  @apply w-full h-full object-cover rounded-full;
+
+  border: 2px solid rgba(255, 255, 255, 0.8);
+
+  box-shadow: 0 4px 10px rgba(14, 116, 144, 0.15);
+}
+
+.status-dot {
+  @apply absolute bottom-3 right-1 w-3.5 h-3.5 rounded-full;
+
+  background: #4ade80;
+
+  border: 2px solid #e8f8ff;
+}
+
+.profile-info {
+  @apply min-w-0 max-w-full;
+}
+
+.profile-info h3 {
+  @apply text-lg font-extrabold leading-none max-w-full;
+
+  color: #075985;
+}
+
+.profile-info p {
+  @apply text-sm mt-1 max-w-full;
+
+  color: rgba(7, 89, 133, 0.58);
+}
+
+.footer-socials {
+  @apply flex items-center justify-center gap-2 shrink-0 max-w-full;
+}
+
+.social-btn {
+  @apply flex items-center justify-center w-10 h-10 shrink-0 rounded-xl transition-all duration-300;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  border: 1px solid rgba(255, 255, 255, 0.6);
+
+  color: #0369a1;
+
+  box-shadow: 0 4px 10px rgba(14, 116, 144, 0.08);
+}
+
+.social-btn i {
+  @apply text-xl lg:text-2xl;
+}
+
+.social-btn:hover {
+  background: #0369a1;
+
+  color: #fff;
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 15px rgba(3, 105, 161, 0.25);
+}
+
+/* ================= Animations ================= */
+
+@keyframes resultAppear {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bubbleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes sunFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* npx @tailwindcss/cli -i ./src/assets/stylesheet/main.css -o ./src/assets/stylesheet/output.css --watch */
