@@ -44,7 +44,6 @@ The project focuses on practicing **API integration, asynchronous JavaScript, DO
 - **JavaScript (Vanilla JS)**
 - **Weather API**
 - **Fetch API**
-- **Async / Await**
 - **DOM Manipulation**
 
 ---
